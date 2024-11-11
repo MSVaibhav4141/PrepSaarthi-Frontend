@@ -1606,10 +1606,10 @@ const Mentor = () => {
                                         color="text.secondary"
                                         gutterBottom
                                       >
-                                        Earning
+                                        Earningsss
                                       </Typography>
                                       <Typography variant="h3">
-                                      &#8377;{(connectionLoad === false &&
+                                      &#8377;{(connectionLoad === false ? 
                                           Math.round(
                                             connection?.reduce(
                                               (total, current) => {
@@ -1620,7 +1620,7 @@ const Mentor = () => {
                                               },
                                               0
                                             )
-                                          )) || <CircularProgress />}
+                                          ):<CircularProgress />) }
                                       </Typography>
                                     </CardContent>
                                   </CardActionArea>
@@ -1681,9 +1681,13 @@ const Mentor = () => {
                                         Connections
                                       </Typography>
                                       <Typography variant="h3">
-                                        {(connectionLoad === false &&
-                                          <>{connection?.length || stuCon?.connection?.length}</>) || (
-                                          <CircularProgress />
+                                        {(connectionLoad === false ? 
+                                          <>{connection?.length}</>: (
+                                            <CircularProgress />) 
+                                        )}
+                                        {(connectionLoad === false ? 
+                                          <>{stuCon?.connection?.length}</>: (
+                                            <CircularProgress />) 
                                         )}
                                       </Typography>
                                     </CardContent>

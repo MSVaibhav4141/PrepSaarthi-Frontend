@@ -40,6 +40,7 @@
     "start": "react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
+    "create-env": "node src/utils/envCrete.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
