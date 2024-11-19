@@ -15,6 +15,7 @@ import {
   deleteUserReducer,
   getConnectionByMob,
   getMentorByMob,
+  getMessageStudent,
   getVisitReducer,
   grantStatusHeadMentor,
   mentorDetailsReducer,
@@ -109,7 +110,8 @@ const store = configureStore({
     mentorChat:chatMentor,
     notification:notificationUser,
     syllabus:syllabusGetter,
-    syllabusUpdate:syllabusTrackerEditor
+    syllabusUpdate:syllabusTrackerEditor,
+    getStudentmessage:getMessageStudent,
   },
   devTools:process.env.NODE_ENV === 'development' ? true : false
 });

@@ -31,6 +31,7 @@
     "react-scripts": "5.0.1",
     "react-swipeable-views": "^0.14.0",
     "react-to-pdf": "^1.0.1",
+    "react-toastify": "^10.0.6",
     "serialize-error": "^11.0.3",
     "socket.io-client": "^4.7.5",
     "swiper": "^11.1.12",
