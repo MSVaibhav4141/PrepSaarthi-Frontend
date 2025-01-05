@@ -9,19 +9,19 @@
 ._home-top-left,
 ._home-top-right {
   width: 50%;
-  height: calc(100vh-60px);
+  height: calc(100vh- 60px);
 }
 ._home-top-left {
-  padding: 4vmax 1vmax 4vmax 7vmax;
+  padding: 5vmax 1vmax 4vmax 7vmax;
 }
 ._home-top-right{
   padding-top: 6vmax;
 }
 ._home-top-left > h2 {
   font-weight: 800;
-  font-size: 2.18vmax;
+  font-size: 2.19vmax;
   color: #2f281e;
-  margin-bottom: 1.5vmax;
+  margin-bottom: 2vmax;
 }
 ._home-top-left > p {
   font-size: 1.4vmax;
@@ -174,10 +174,76 @@
     width: 25%;
   }
 }
+.firBtn {
+  margin-top: 20px;
+  z-index: 1;
+  position: relative;  
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  font-size: 1.2vmax;
+  font-weight: bold;
+  background-color: #3A5AFF;
+  outline: none;
+  border: none;
+  transition: all 0.4s ease; /* Transition for all properties with duration and timing */
+  cursor: pointer;
+  border-radius: 30px;
+  width: 19vmax;
+  height: 5vmax;
+}
+
+.firBtn:hover {
+  background-color: #2a48e5; /* Change the background color on hover */
+  color: #ffcc00; /* Change text color on hover */
+  transform: scale(1.1); /* Slightly enlarge the button */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add a shadow for a floating effect */
+}
+
+.firBtn::before {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #0505A9;
+  border-radius: 30px;
+}
+
+.firBtn::after {
+  content: "";
+  z-index: -2;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s 0.2s;
+  border-radius: 30px;
+}
+
+
+@media (min-width: 850px) and (max-width: 1094px) {
+  .button-container {
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+   /* Center items vertically */
+     
+  }
+ 
+}
 
 @media (max-height: 400px) {
   ._home-top-first {
     height: 100vh;
     position: relative;
+  }
+ 
+}
+@media (max-width: 850px){
+  .secBtn{
+    margin-left: 2%;
   }
 }

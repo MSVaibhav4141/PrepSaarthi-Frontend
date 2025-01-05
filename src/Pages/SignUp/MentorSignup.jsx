@@ -378,7 +378,7 @@ export default function MentorSignUp() {
                       "&:hover": { backgroundColor: "var(--button1Hover)" },
                     } : {display:"none"}}
                   >
-                    Verify your Email and Number
+                   Sign Up
                   </LoadingButton>
                 </Grid>
                 <Grid item xs={12} sx={sent ? {display:'block'} : {display:'none'}}>
