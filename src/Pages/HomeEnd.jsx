@@ -89,6 +89,7 @@ const HomeEnd = () => {
                     onClick={() => {
                       toggleAnwser(i);
                     }}
+                   
                   >
                     <div>
                       <span>{item.question}</span>
@@ -113,6 +114,7 @@ const HomeEnd = () => {
                     onClick={() => {
                       toggleAnwser(i);
                     }}
+                    
                   >
                     <div>
                       <span>{item.question}</span>

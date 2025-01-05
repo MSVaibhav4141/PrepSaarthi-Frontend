@@ -21,6 +21,8 @@ const HomeMiddle = () => {
   const isSmallScreen = useMediaQuery("(max-width:850px)");
   const { user } = useSelector((state) => state.mentorList);
 
+   
+
   React.useEffect(() => {
     dispatch(getMentorList());
   }, [dispatch]);
@@ -130,7 +132,7 @@ const HomeMiddle = () => {
           </Swiper>
         </div>
         <h2 className="_home-middle-heading">How do we work?</h2>
-        <div className="_how-work">
+        <div className="_how-work" >
           {services.map((item, i) => (
             <Card
               key={i}
@@ -139,7 +141,9 @@ const HomeMiddle = () => {
                 height: isSmallScreen ? 200 : 330,
                 width: "95%",
                 borderRadius: "1.5vmax",
+                
               }}
+              data-aos="zoom-in"
             >
               <CardActionArea
                 sx={{
@@ -190,6 +194,7 @@ const HomeMiddle = () => {
                 width: "95%",
                 borderRadius: "1.5vmax",
               }}
+              data-aos="zoom-in"
             >
               <CardActionArea
                 sx={{

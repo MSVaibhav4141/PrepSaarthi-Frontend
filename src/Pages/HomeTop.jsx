@@ -1,4 +1,4 @@
-import React from "react";
+
 import "./homeTop.css";
 import { Box, Button, Typography } from "@mui/material";
 import SchoolIcon from "@mui/icons-material/School";
@@ -10,7 +10,24 @@ import { Link, useNavigate } from "react-router-dom";
 import FlipBook from "./FlipBook";
 import Roles from "./Roles.jsx";
 import { useSelector } from "react-redux";
+import TextAnimation from "../Components/TextAnimation/TextAnimation.jsx";
+import BlobButton from "../Components/BlobButton/BlobButton.jsx";
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import LineButton from "../Components/LineButton/LineButton.jsx";
+
+
 const HomeTop = () => {
+  
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in milliseconds
+      once: true, // Animation will only run once
+    });
+  }, []);
+  
+
   const HomeTopSecond = [
     {
       icon: <ImportContactsIcon />,
@@ -85,10 +102,12 @@ const HomeTop = () => {
   };
   return (
     <>
+
       <div className="_home-top-first">
         <div className="_home-top-left">
+          
           <h2>
-            A platform that empowers you with the{" "}
+            A platform that empowers you with the {" "}  
             <Typography
               component="p"
               variant="p"
@@ -99,71 +118,33 @@ const HomeTop = () => {
                 fontWeight: { xs: 900 },
               }}
             >
-              "FREEDOM OF CHOICE"
+              FREEDOM
             </Typography>{" "}
-            to select your mentor
+            of choice
+            
+            <TextAnimation/>
           </h2>
+            
           {/* <h2> That Empowers You</h2> */}
           <p>
             {/* Top mentors from IIT and Tier 1 colleges ready to make you thrive!!! */}
             Connect with IIT-JEE Toppers through PrepSaarthi and take your
             preparation to next level
           </p>
+          <div style={{
+    display: 'flex',
+    justifyContent: 'space-between'}}>
           <Box component={Link} to="/lists/mentors">
-            <Button
-              size="large"
-              sx={{
-                bgcolor: "#3A5AFF",
-                m: { xs: "2vmax", sm: 0 },
-                mr: { sm: "2vmax" },
-                mb:{sm:'1vmax', md:0},
-                width: { xs: "25vmax" ,sm:'16vmax', md:'15vmax', lg:'15vmax'},
-                height: { xs: "8vmax", sm:'5vmax',md:'4vmax', lg:'4vmax' },
-                fontWeight: 700,
-                fontSize:{xs:'1.8vmax', sm:'1.2vmax',md:'1vmax'}
-              }}
-              variant="contained"
-            >
-              Explore Your Mentor
-            </Button>
+             <button className="firBtn">Explore Your Mentor</button>
           </Box>
-          <Box sx={{ position: 'relative', display: 'inline-block' }}>
-      <Button
-        size="large"
-        sx={{
-          bgcolor: "#ffc43b",
-          m: { xs: "2vmax", sm: 0 },
-          mr: { sm: "2vmax" },
-          mb: { sm: '1vmax', md: 0 },
-          width: { xs: "25vmax", sm: '16vmax', md: '15vmax', lg: '15vmax' },
-          height: { xs: "8vmax", sm: '5vmax', md: '4vmax', lg: '4vmax' },
-          fontWeight: 700,
-          fontSize: { xs: '1.8vmax', sm: '1.2vmax', md: '1vmax' },
-          "&:hover": { bgcolor: "#ffce5d" },
-        }}
-        variant="contained"
-        onClick={handleOpen}
-      >
-        Products
-      </Button>
+          <Box className="secBtn" sx={{ position: 'relative', display: 'inline-block' }}>
+          <BlobButton text="Products"/>
+          </Box>
+    </div>
 
-      <Box
-        sx={{
-          position: 'absolute',
-          top: {xs:'35px',md:'25px'}, 
-          right: {xs:'5px',md:'20px'}, 
-          bgcolor: '#ff4081', 
-          color: '#fff', 
-          borderRadius: '4px',
-          px: 1, 
-          fontSize: { xs: '0.75rem', sm: '0.85rem' },
-          transform: 'rotate(45deg)', 
-          transformOrigin: 'top right', 
-        }}
-      >
-        Free
-      </Box>
-    </Box>
+
+
+    
           <Modal
             open={open}
             onClose={handleClose}
@@ -228,16 +209,23 @@ const HomeTop = () => {
             </Box>
           </Modal>
         </div>
-        <div className="_home-top-right">
+        <div data-aos="fade-left" className="_home-top-right">
           <img className="_mob" src="/images/boy.png" alt="homepage" />
           {/* <img src="/images/path.jpg" alt="homepage" /> */}
         </div>
       </div>
+
+
+
+
+
+
+
       <div className="_home-top-second">
         <h2 className="_home-middle-heading">Who is PrepSaarthi for?</h2>
         <div>
           {HomeTopSecond.map((item, index) => (
-            <div className="_suitable-for-whom" key={index}>
+            <div className="_suitable-for-whom" data-aos="zoom-in" key={index}>
               {item.icon}
               <h3>{item.heading}</h3>
               <p>{item.para}</p>
@@ -250,7 +238,7 @@ const HomeTop = () => {
           component={Link}
           to="/signup"
         > */}
-          <Button
+          {/* <Button
             size="large"
             sx={{
               width: { xs: "18vmax", sm: "12vmax" },
@@ -265,10 +253,18 @@ const HomeTop = () => {
             }}
             className="_home-top-button"
             variant="contained"
-            onClick={handleOpenJoin}
+            
           >
             Join Us
-          </Button>
+          </Button> */}
+
+          
+        <Box onClick={handleOpenJoin} display={"flex"}
+          alignSelf={"center"}
+          component={Link}>
+           
+          <LineButton />
+          </Box>
           <Modal
             open={openJoin}
             onClose={handleCloseJoin}

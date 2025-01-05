@@ -29,6 +29,8 @@ import {
   resoveConnectionReducer,
   sendOTPReducer,
   stuSendOTPReducer,
+  stuSendOTPemailReducer,
+  stuSendOTPnumbReducer,
   swapConnectionReducer,
   tkidReducer,
   updateMentor,
@@ -86,6 +88,8 @@ const store = configureStore({
     deleteReview: deleteReviewReducer,
     newOTPsend:sendOTPReducer,
     newStuOTPsend:stuSendOTPReducer,
+    newStuOTPsendemail:stuSendOTPemailReducer,
+    newStuOTPsendnumb:stuSendOTPnumbReducer,
     resendOtherOTP:reSendOTPReducer,
     resendOtherOTPStu:reSendOTPReducerStu,
     verifyUser:verifyOTPReducer,
@@ -111,7 +115,7 @@ const store = configureStore({
     syllabus:syllabusGetter,
     syllabusUpdate:syllabusTrackerEditor
   },
-  devTools:process.env.NODE_ENV === 'development' ? true : false
+  devTools:process.env.REACT_APP_NODE_ENV === 'development' ? true : false
 });
 
 export default store;
