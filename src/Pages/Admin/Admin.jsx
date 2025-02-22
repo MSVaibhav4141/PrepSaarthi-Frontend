@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Typography, Toolbar, TextField } from "@mui/material";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
@@ -32,46 +31,13 @@ import {
   getAllMentors,
   getAllStudents,
   getVisitsData,
-  sendMessageToMentors,
-  sendMessageToStudents,
 } from "../../action/userAction.js";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 export default function AdminDashboard() {
   const [open, setOpen] = useState(false);
   const { visits, loading, error } = useSelector((state) => state.visitReducer);
   const [menudata, setMenuData] = useState("Dashboard");
-  const [mentorMessage, setMentorMessage] = useState(""); // State for mentor message
-  const [studentMessage, setStudentMessage] = useState(""); // State for student message
   const dispatch = useDispatch();
-
-  // Function to send message to mentors
-  const handleSendMentorMessage = () => {
-    console.log("clicked");
-    
-    if (mentorMessage.trim() === "") {
-      alert("Message to mentors cannot be empty!"); // Add validation
-      return;
-    }
-    console.log(mentorMessage);
-    dispatch(sendMessageToMentors({ message: mentorMessage })); 
-    
-    setMentorMessage(""); // Clear message field after sending
-    toast("Message sent to mentors successfully!");
-  };
-
-  // Function to send message to students
-  const handleSendStudentMessage = () => {
-    if (studentMessage.trim() === "") {
-      alert("Message to students cannot be empty!"); // Add validation
-      return;
-    }
-    dispatch(sendMessageToStudents({ message: studentMessage })); // Dispatch action
-    setStudentMessage(""); // Clear message field after sending
-    toast("Message sent to students successfully!");
-  };
-
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
@@ -292,11 +258,13 @@ export default function AdminDashboard() {
           "Students",
           "Mentors",
           "Admins",
-          "Manage Connection",
-          "Message to Mentors",
-          "Message to Students",
+          "Manage Connection"
         ].map((text, index) => (
-          <ListItem key={text} disablePadding onClick={() => naviagteMenu(text)}>
+          <ListItem
+            key={text}
+            disablePadding
+            onClick={() => naviagteMenu(text)}
+          >
             <ListItemButton>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -305,7 +273,6 @@ export default function AdminDashboard() {
             </ListItemButton>
           </ListItem>
         ))}
-
       </List>
       <Divider />
     </Box>
@@ -335,12 +302,10 @@ export default function AdminDashboard() {
           Admin Menu
         </Button>
       </Box>
-      <ToastContainer />
       <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
       <Box sx={{ flexGrow: 1, p: 3 }}>
-        <Toolbar />
         {menudata === "Dashboard" && <Dashboard />}
         {menudata === "Request" && <Requests />}
         {menudata === "Connection" && <Allconnction />}
@@ -348,22 +313,6 @@ export default function AdminDashboard() {
         {menudata === "Mentors" && <MentorAll />}
         {menudata === "Admins" && <AllAdmin />}
         {menudata === "Manage Connection" && <ManageConnection />}
-
-        {/* Message to Mentors */}
-        {menudata === "Message to Mentors" && (
-          <Box sx={{ padding: 2, backgroundColor: "#f5f5f5", marginTop: 2 }}>
-            <Typography variant="h6">Message to Mentors</Typography>
-            <Typography>Here you can send a message to all mentors.</Typography>
-          </Box>
-        )}
-
-        {/* Message to Students */}
-        {menudata === "Message to Students" && (
-          <Box sx={{ padding: 2, backgroundColor: "#e0f7fa", marginTop: 2 }}>
-            <Typography variant="h6">Message to Students</Typography>
-            <Typography>Here you can send a message to all students.</Typography>
-          </Box>
-        )}
       </Box>
       <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" } }}>
         <Box sx={{ margin: "0 auto" }}>
@@ -484,76 +433,6 @@ export default function AdminDashboard() {
           />
         </Box>
       </Box>
-      <div className="text-4xl">Message to</div>
-
-
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: 2,
-          padding: 2,
-          backgroundColor: "#f5f5f5",
-          marginTop: 2,
-        }}
-      >
-
-
-        {/* Message to Mentors */}
-        <Box sx={{ flex: "1 1 calc(50% - 16px)" }}>
-          <TextField
-            fullWidth
-            multiline
-            rows={4}
-            variant="outlined"
-            placeholder="Write a message to mentors..."
-            sx={{ marginBottom: 1 }}
-            value={mentorMessage}
-            onChange={(e) => setMentorMessage(e.target.value)}
-          />
-          <Button
-            variant="contained"
-            onClick={handleSendMentorMessage}
-            sx={{
-              backgroundColor: "yellow",
-              color: "black",
-              "&:hover": {
-                backgroundColor: "#ffcc00",
-              },
-            }}
-          >
-            Send
-          </Button>
-        </Box>
-
-        {/* Message to Students */}
-        <Box sx={{ flex: "1 1 calc(50% - 16px)" }}>
-          <TextField
-            fullWidth
-            multiline
-            rows={4}
-            variant="outlined"
-            placeholder="Write a message to students..."
-            sx={{ marginBottom: 1 }}
-            value={studentMessage}
-            onChange={(e) => setStudentMessage(e.target.value)}
-          />
-          <Button
-            variant="contained"
-            onClick={handleSendStudentMessage}
-            sx={{
-              backgroundColor: "yellow",
-              color: "black",
-              "&:hover": {
-                backgroundColor: "#ffcc00",
-              },
-            }}
-          >
-            Send
-          </Button>
-        </Box>
-      </Box>
-
     </div>
   );
 }

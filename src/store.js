@@ -15,7 +15,6 @@ import {
   deleteUserReducer,
   getConnectionByMob,
   getMentorByMob,
-  getMessageStudent,
   getVisitReducer,
   grantStatusHeadMentor,
   mentorDetailsReducer,
@@ -30,6 +29,10 @@ import {
   resoveConnectionReducer,
   sendOTPReducer,
   stuSendOTPReducer,
+  stuSendOTPemailReducer,
+  stuSendOTPnumbReducer,
+  mentorSendOTPemailReducer,
+  mentorSendOTPnumbReducer,
   swapConnectionReducer,
   tkidReducer,
   updateMentor,
@@ -37,6 +40,8 @@ import {
   updateMentorPassword,
   updateMentorRole,
   verifyOTPReducer,
+  uploadvideoLecturePhyNoteReducer,
+  fetchvideoLecturePhyNoteReducer,
 } from "./reducer/userReducer";
 import {
   allConnectionReducer,
@@ -59,6 +64,8 @@ import {
 import { newPayment, newSubscription } from "./reducer/paymnentReducer";
 const store = configureStore({
   reducer: {
+    uploadvideoLecturePhyNote: uploadvideoLecturePhyNoteReducer,
+    fetchvideoLecturePhyNote: fetchvideoLecturePhyNoteReducer,
     mentor: mentorSignup,
     student: studentSignup,
     mentorDeatil: mentorDetailsReducer,
@@ -87,6 +94,10 @@ const store = configureStore({
     deleteReview: deleteReviewReducer,
     newOTPsend:sendOTPReducer,
     newStuOTPsend:stuSendOTPReducer,
+    newStuOTPsendemail:stuSendOTPemailReducer,
+    newStuOTPsendnumb:stuSendOTPnumbReducer,
+    newMentorOTPsendemail:mentorSendOTPemailReducer,
+    newMentorOTPsendnumb:mentorSendOTPnumbReducer,
     resendOtherOTP:reSendOTPReducer,
     resendOtherOTPStu:reSendOTPReducerStu,
     verifyUser:verifyOTPReducer,
@@ -110,10 +121,9 @@ const store = configureStore({
     mentorChat:chatMentor,
     notification:notificationUser,
     syllabus:syllabusGetter,
-    syllabusUpdate:syllabusTrackerEditor,
-    getStudentmessage:getMessageStudent,
+    syllabusUpdate:syllabusTrackerEditor
   },
-  devTools:process.env.NODE_ENV === 'development' ? true : false
+  devTools:import.meta.env.VITE_NODE_ENV === 'development' ? true : false
 });
 
 export default store;

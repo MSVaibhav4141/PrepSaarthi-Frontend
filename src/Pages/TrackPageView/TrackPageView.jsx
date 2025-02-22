@@ -6,7 +6,7 @@ function TrackPageView() {
   useEffect(() => {
     const sendPageViewCount = async () => {
       try {
-        await fetch(`${process.env.REACT_APP_API_URL}/v1/api/update-counts`, {
+        await fetch(`${import.meta.env.VITE_API_URL}/v1/api/update-counts`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -22,7 +22,7 @@ function TrackPageView() {
       if (!sessionStorage.getItem("visited")) {
         try {
         
-          await fetch(`${process.env.REACT_APP_API_URL}/v1/api/update-counts`, {
+          await fetch(`${import.meta.env.VITE_API_URL}/v1/api/update-counts`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

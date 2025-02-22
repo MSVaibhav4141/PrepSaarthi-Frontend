@@ -12,13 +12,15 @@ import Logo from "./logoMobile.png";
 import { clearError } from "../../action/userAction";
 import toast from "react-hot-toast";
 import LoadingButton from "@mui/lab/LoadingButton";
+
 import {
   paymentInitator,
   // paymentInitatorSub,
   reset,
 } from "../../action/paymentAction";
 import MetaData from "../../utils/Metadata";
-const ConfirmMentorShipPayment = ({ item, sub, stu }) => {
+import SplitButton from "../../Components/SplitButton/SplitButton";
+const  ConfirmMentorShipPayment = ({ item, sub, stu }) => {
   const dispatch = useDispatch();
   useEffect(() => {}, []);
   const {
@@ -57,7 +59,7 @@ const ConfirmMentorShipPayment = ({ item, sub, stu }) => {
   //           "Get access to india's top IITians mentorship with few clicks",
   //         image: Logo,
   //         subscription_id: subscriptionId,
-  //         callback_url: `${process.env.REACT_APP_API_URL}/v1/paymentVerification/subscription?id=${item.id}&price=${sub.price}`,
+  //         callback_url: `${process.env.VITE_API_URL}/v1/paymentVerification/subscription?id=${item.id}&price=${sub.price}`,
   //         prefill: {
   //           name: stu.name,
   //           email: stu.email,
@@ -103,7 +105,7 @@ const ConfirmMentorShipPayment = ({ item, sub, stu }) => {
         description: `Subscrption for ${item.name}'s mentorship`,
         image: Logo,
         order_id: order.id,
-        callback_url: `${process.env.REACT_APP_API_URL}/v1/paymentVerification?id=${item.id}&price=${sub.price}&duration=${duration}`,
+        callback_url: `${import.meta.env.VITE_API_URL}/v1/paymentVerification?id=${item.id}&price=${sub.price}&duration=${duration}`,
         prefill: {
            name: stu.name,
             email: stu.email,
@@ -238,27 +240,39 @@ const ConfirmMentorShipPayment = ({ item, sub, stu }) => {
           </Grid>
         </Box>
         <Box sx={{ width: { xs: "38vmax", md: "28vmax" }, p: "1vmax" }}>
-          <Typography textAlign="end">Total: {sub.price} </Typography>
-          {sub.type === "weekly" ? (
-            <LoadingButton
-              loading={loading}
-              sx={{ width: { xs: "36vmax", md: "26vmax" }, p: "1vmax" }}
-              variant="contained"
-              onClick={() => handlePayment(sub.price,'month')}
-            >
-              Pay {sub.price}
-            </LoadingButton>
-          ) : (
-            <LoadingButton
-              loading={loading}
-              sx={{ width: { xs: "36vmax", md: "26vmax" }, p: "1vmax" }}
-              variant="contained"
-              onClick={() => handlePayment(sub.price,'week')}
-            >
-              Pay {sub.price}
-            </LoadingButton>
-          )}
-        </Box>
+  <Typography textAlign="end">Total: {sub.price}</Typography>
+  {sub.type === "1month" ? (
+    <LoadingButton
+      loading={loading}
+      sx={{ width: { xs: "36vmax", md: "26vmax" }, p: "1vmax" }}
+      variant="contained"
+      onClick={() => handlePayment(sub.price, 'month')}
+    >
+      Pay {sub.price}
+    </LoadingButton>
+  ) : sub.type === "3month" ? (
+    <LoadingButton
+      loading={loading}
+      sx={{ width: { xs: "36vmax", md: "26vmax" }, p: "1vmax" }}
+      variant="contained"
+      onClick={() => handlePayment(sub.price, '3month')}
+    >
+      Pay {sub.price}
+    </LoadingButton>
+  ) : (
+    <LoadingButton
+      loading={loading}
+      sx={{ width: { xs: "36vmax", md: "26vmax" }, p: "1vmax" }}
+      variant="contained"
+      onClick={() => handlePayment(sub.price, '6month')}
+    >
+      Pay {sub.price}
+    </LoadingButton>
+  )}
+</Box>
+
+
+      
       </Box>
     </>
   );

@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import AddIcon from "@mui/icons-material/Add";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import "./homeend.css";
 import { Button } from "@mui/material";
 import { useLocation } from "react-router-dom";
+import "./homeend.css";
+
 const HomeEnd = () => {
   const [answer, setAnswer] = useState(false);
   const [index, setIndex] = useState(-1);
   const [cssClass, setClass] = useState("");
   const [buttonBG, setBG] = useState("");
+  const [animatePage, setAnimatePage] = useState(false);
 
-  const toggleAnwser = (i) => {
+  // Trigger animation when the page loads
+  useEffect(() => {
+    setTimeout(() => setAnimatePage(true), 200); // Delayed animation start
+  }, []);
+
+  const toggleAnswer = (i) => {
     if (index !== i) {
       setAnswer(true);
     } else {
@@ -26,28 +34,28 @@ const HomeEnd = () => {
 
   const faq = [
     {
-      question: "What is PrepSaarthi ?",
+      question: "What is PrepSaarthi?",
       answer:
-        " PrepSaarthi is a platform that provides opportunities for aspiring individuals to choose their mentors. The selected mentor will be available to the aspirants as a friend, providing emotional and mental support throughout their preparation journey. The mentor has already qualified the exam for which the aspirant is preparing, and will provide secret insights and help throughout the journey.",
+        "PrepSaarthi is a platform that provides opportunities for aspiring individuals to choose their mentors...",
     },
     {
       question: "What services do PrepSaarthi provide?",
       answer:
-        "PrepSaarthi is a platform that connects a student with his mentor. The mentor will assist the aspirant like a big brother throughout his preparation journey for IIT JEE.",
+        "PrepSaarthi is a platform that connects a student with his mentor...",
     },
     {
-      question: "How do we select mentors(Saarthi)?",
+      question: "How do we select mentors (Saarthi)?",
       answer:
-        "The mentors listed on the website have been carefully selected through various steps. First, they went through a screening round. We thoroughly analyzed their profiles and then conducted a workshop, personally guided by Ayush Tiwari. After proper refining steps, these mentors are now available for you.",
+        "The mentors listed on the website have been carefully selected through various steps...",
     },
     {
       question: "Is there any Refund Policy?",
-      answer: "No, There's no Refund Policy",
+      answer: "No, There's no Refund Policy.",
     },
     {
       question: "Who can join PrepSaarthi?",
       answer:
-        "PrepSaarthi is exclusively designed for aspirants preparing for the IIT JEE exam through online mode.PrepSaarthi ensures a supportive environment for students preparing via online mode.Students opting for offline mode can also join to overcome challenges in their offline classes.Thus, PrepSaarthi caters to the needs of both online and offline students.",
+        "PrepSaarthi is exclusively designed for aspirants preparing for the IIT JEE exam...",
     },
   ];
 
@@ -59,8 +67,8 @@ const HomeEnd = () => {
     )}`;
     window.open(url, "_blank");
   };
-  const location = useLocation();
 
+  const location = useLocation();
   useEffect(() => {
     if (location.hash) {
       const element = document.querySelector(location.hash);
@@ -69,84 +77,82 @@ const HomeEnd = () => {
       }
     }
   }, [location]);
+
   return (
-    <>
-      <div className="_home-end">
-        <h2 className="_home-middle-heading" id="_faq-end">
-          FAQs
-        </h2>
-        <div className="_home-end-faq">
-          {faq.map((item, i) => {
-            if (i % 2 === 0) {
-              return (
-                  <div
-                    key={i}
-                    className={
-                      answer && index === i
-                        ? "_faq-align-start toggleHeightI"
-                        : "_faq-align-start"
-                    }
-                    onClick={() => {
-                      toggleAnwser(i);
-                    }}
-                  >
-                    <div>
-                      <span>{item.question}</span>
-                      <span>
-                        <AddIcon />
-                      </span>
-                    </div>
-                    <div className={answer && index === i ? "_faq-answer" : ""}>
-                      <span>{item.answer}</span>
-                    </div>
-                  </div>
-              );
-            } else {
-              return (
-                  <div
-                    key={i}
-                    className={
-                      answer && index === i
-                        ? (i === 3 ? "_faq-align-end toggleHeight _policy-height" : "_faq-align-end toggleHeight")
-                        : "_faq-align-end"
-                    }
-                    onClick={() => {
-                      toggleAnwser(i);
-                    }}
-                  >
-                    <div>
-                      <span>{item.question}</span>
-                      <span>
-                        <AddIcon />
-                      </span>
-                    </div>
-                    <div className={answer && index === i ? "_faq-answer" : ""}>
-                      <span>{item.answer}</span>
-                    </div>
-                  </div>
-              );
-            }
-          })}
-        </div>
-        <div className="_homeend-two">
-          <h2 className="_home-middle-heading">More Questions?</h2>
-          <p className="_more-doubts">Dont worry we are here &#128522;</p>
-          <div className={`_more-question  ${cssClass}`}>
-            <Button
-              className={`askus_button ${buttonBG}`}
-              variant="contained"
-              onMouseEnter={() => handleBackground("_containerBG", "_buttonBG")}
-              onMouseLeave={() => handleBackground("", "")}
-              startIcon={<WhatsAppIcon sx={{ fontSize: "2vmax !important" }} />}
-              // sx={{width:'100%'}}
-              onClick={openWhatsapp}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={animatePage ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="_home-end"
+    >
+      <h2 className="_home-middle-heading" id="_faq-end">
+        FAQs
+      </h2>
+      <div className="_home-end-faq">
+        {faq.map((item, i) => {
+          const isOpen = answer && index === i;
+          return (
+            <motion.div
+              key={i}
+              initial={{ x: i % 2 === 0 ? -100 : 100, opacity: 0 }}
+              animate={animatePage ? { x: 0, opacity: 1 } : {}}
+              transition={{
+                duration: 0.6,
+                delay: 0.2 * i,
+                ease: "easeOut",
+              }}
+              className={
+                isOpen
+                  ? i % 2 === 0
+                    ? "_faq-align-start toggleHeightI"
+                    : "_faq-align-end toggleHeight"
+                  : i % 2 === 0
+                  ? "_faq-align-start"
+                  : "_faq-align-end"
+              }
+              onClick={() => toggleAnswer(i)}
             >
-              Lets Clear Your Doubt
-            </Button>
-          </div>
-        </div>
+              <div>
+                <span>{item.question}</span>
+                <span>
+                  <AddIcon />
+                </span>
+              </div>
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={isOpen ? { height: "auto", opacity: 1 } : {}}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="_faq-answer"
+              >
+                <span>{item.answer}</span>
+              </motion.div>
+            </motion.div>
+          );
+        })}
       </div>
-    </>
+
+      <div className="_homeend-two">
+        <h2 className="_home-middle-heading">More Questions?</h2>
+        <p className="_more-doubts">Don't worry, we are here 😊</p>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={animatePage ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className={`_more-question ${cssClass}`}
+        >
+          <Button
+            className={`askus_button ${buttonBG}`}
+            variant="contained"
+            onMouseEnter={() => handleBackground("_containerBG", "_buttonBG")}
+            onMouseLeave={() => handleBackground("", "")}
+            startIcon={<WhatsAppIcon sx={{ fontSize: "2vmax !important" }} />}
+            onClick={openWhatsapp}
+          >
+            Let's Clear Your Doubts
+          </Button>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 };
 

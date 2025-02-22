@@ -34,12 +34,59 @@ import {
   clearError,
   getSuccessMentorConnection,
 } from "../../action/metorListAction";
+
+
+
+import ButtonGroup from '@mui/material/ButtonGroup';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+
+
 import toast from "react-hot-toast";
 import RatingMentor from "./RatingMentor";
 import ConfirmMentorShipPayment from "../ConfirmMentorShipPayment/ConfirmMentorShipPayment";
 import MetaData from "../../utils/Metadata";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
+
+const options = ['1 month', '3 month', '6 month'];
+
 const MentorProfile = () => {
+
+
+
+
+const [openBtn, setOpenBtn] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
+
+  const handleClick = () => {
+    console.info(`You clicked on ${options[selectedIndex]}`);
+  };
+
+  const handleMenuItemClick = (event, index) => {
+    setSelectedIndex(index);
+    setOpenBtn(false);
+    console.log(index);
+  };
+
+  const handleToggle = (event) => {
+    setAnchorEl(event.currentTarget);
+    setOpenBtn((prevOpen) => !prevOpen);
+  };
+
+  const handleCloseBtn = (event) => {
+    if (anchorEl && anchorEl.contains(event.target)) {
+      return;
+    }
+    setOpenBtn(false);
+  };
+
+
+
+
+
+
   const dispatch = useDispatch();
   const { id } = useParams();
   const { error, loading, user } = useSelector((state) => state.mentorDeatil);
@@ -187,6 +234,8 @@ const MentorProfile = () => {
     navigate("/lists/mentors");
   };
   useEffect(() => {
+    console.log(selectedIndex);
+    
     if (!isAuthenticated && !menAuth && !menLoading && !stuLoading) {
       setOpen(true);
     }
@@ -393,50 +442,52 @@ const MentorProfile = () => {
                       </Typography>
                       {(isAuthenticated || menAuth) &&
                       !stuUser?.user?.mentorAssigned ? (
-                        <Box sx={{ display: "flex", flexDirection: "row" }}>
+                        <Box sx={{ display: "flex", flexDirection: "row"  ,alignItems: "center", }}>
+    
                           <Button
                             variant="outlined"
                             sx={{ width: { xs: "18vmax", md: "12vmax" } }}
-                            onClick={() => {
-                              if (
-                                isAuthenticated &&
-                                !(user?.activeMentee >= 3)
-                              ) {
-                                setShowPage(true);
-                                setSubscription({
-                                  type: "daily",
-                                  api: "xyz",
-                                  price: user?.ppd,
-                                });
-                              } else if (
-                                mentor?.user?.signedUpFor === "mentor"
-                              ) {
-                                toast.error("Mentors Can't Buy Mentorship");
-                              } else if (user?.activeMentee >=3) {
-                                toast(
-                                  `Oops! ${
-                                    user?.name?.split(" ")[0]
-                                  } is busy with other mentees. Try again later or explore other mentorships!`,
-                                  {
-                                    id: "month",
+                            onClick={() => navigate('/features')} 
+                            // onClick={() => {
+                            //   if (
+                            //     isAuthenticated &&
+                            //     !(user?.activeMentee >= 3)
+                            //   ) {
+                            //     setShowPage(true);
+                            //     setSubscription({
+                            //       type: "daily",
+                            //       api: "xyz",
+                            //       price: user?.ppd,
+                            //     });
+                            //   } else if (
+                            //     mentor?.user?.signedUpFor === "mentor"
+                            //   ) {
+                            //     toast.error("Mentors Can't Buy Mentorship");
+                            //   } else if (user?.activeMentee >=3) {
+                            //     toast(
+                            //       `Oops! ${
+                            //         user?.name?.split(" ")[0]
+                            //       } is busy with other mentees. Try again later or explore other mentorships!`,
+                            //       {
+                            //         id: "month",
 
-                                    icon: (
-                                      <EventAvailableIcon
-                                        sx={{ color: "var(--button2)" }}
-                                      />
-                                    ),
-                                  }
-                                );
-                              } else {
-                                toast(" Login To Buy Your Mentorship");
-                                navigate("/login");
-                              }
-                            }}
+                            //         icon: (
+                            //           <EventAvailableIcon
+                            //             sx={{ color: "var(--button2)" }}
+                            //           />
+                            //         ),
+                            //       }
+                            //     );
+                            //   } else {
+                            //     toast(" Login To Buy Your Mentorship");
+                            //     navigate("/login");
+                            //   }
+                            // }}
                           >
-                            &#8377;
-                            {Intl.NumberFormat("en-IN").format(user?.ppd)}/week
+                          
+                            Features
                           </Button>
-                          <Button
+                          {/* <Button
                             variant="contained"
                             sx={{
                               width: { xs: "18vmax", md: "12vmax" },
@@ -480,7 +531,174 @@ const MentorProfile = () => {
                           >
                             &#8377;
                             {Intl.NumberFormat("en-IN").format(user?.ppm)}/month
-                          </Button>
+                          </Button> */}
+
+
+
+
+
+
+                          <React.Fragment>
+      <ButtonGroup
+        variant="contained"
+        aria-label="Button group with a nested menu"
+        sx={{
+          display: 'flex',
+          '& .MuiButton-root:first-of-type': {
+            flexGrow: 1, // Make the main button take more space
+           
+            width: { xs: "18vmax", md: "10vmax" },
+          
+          },
+          '& .MuiButton-root:last-of-type': {
+            flexGrow: 0.3, // Allocate smaller space to the arrow button
+            padding: 0, // Remove padding for a compact look
+            width: '4.5vmax', // Match height for visual alignment
+
+          },
+        }}
+      >
+        <Button 
+        
+        onClick={() => { handleClick();
+          if (
+            isAuthenticated &&
+            !(user?.activeMentee >= 3)
+          ) {
+            console.log("hi");
+              if( options[selectedIndex] == "1 month"){
+                setShowPage(true);
+                setSubscription({
+                  type: "1month",
+                  api: "xyz",
+                  price: user?.ppm,
+                  
+                });               
+              }
+              else if(options[selectedIndex] == "3 month"){
+                setShowPage(true);
+                setSubscription({
+                  type: "3month",
+                  api: "xyz",
+                  price: (() => {
+                    const basePrice = user?.ppm; // Get ppm value, default to 0 if undefined
+                    const multipliedValue = basePrice * 3; // Multiply by 3
+                    const discount = multipliedValue * 0.03; // Calculate 3% discount
+                    console.log("Calculated Price:", multipliedValue - discount);
+                    return multipliedValue - discount; // Subtract discount and return the final price
+                  })(),
+                });  
+                
+              }
+
+              else if(options[selectedIndex] == "6 month"){
+                setShowPage(true);
+                setSubscription({
+                  type: "6month",
+                  api: "xyz",
+                  price: (() => {
+                    const basePrice = user?.ppm ; // Get ppm value, default to 0 if undefined
+                    const multipliedValue = basePrice * 6; // Multiply by 3
+                    const discount = multipliedValue * 0.06; // Calculate 6% discount
+                    console.log("Calculated Price:", multipliedValue - discount);
+                    return multipliedValue - discount; // Subtract discount and return the final price
+                  })(),
+                });  
+                
+              }
+          } 
+          else if (
+            mentor?.user?.signedUpFor === "mentor"
+          ) {
+            toast.error("Mentors Can't Buy Mentorship");
+          } else if (user?.activeMentee >= 3) {
+            toast(
+              `Oops! ${
+                user?.name?.split(" ")[0]
+              } is busy with other mentees. Try again later or explore other mentorships!`,
+              {
+                id: "month",
+                icon: (
+                  <EventAvailableIcon
+                    sx={{ color: "var(--button2)" }}
+                  />
+                ),
+              }
+            );
+          } else {
+            toast(" Login To Buy Your Mentorship");
+            navigate("/login");
+          }
+
+        }
+      }
+
+        >
+          {/* {options[selectedIndex]}   */}
+          &#8377;{Intl.NumberFormat("en-IN").format(user?.ppm)}/month
+        </Button>
+        <Button
+          aria-controls={openBtn ? 'split-button-menu' : undefined}
+          aria-expanded={openBtn ? 'true' : undefined}
+          aria-label="select merge strategy"
+          aria-haspopup="menu"
+          onClick={handleToggle}
+        >
+          <ArrowDropDownIcon fontSize="small" />
+        </Button>
+      </ButtonGroup>
+      <Menu
+        anchorEl={anchorEl}
+        open={openBtn}
+        onClose={handleCloseBtn}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        PaperProps={{
+          style: {
+            maxHeight: 250,
+            width: '20ch',
+            marginLeft: 10,
+          },
+        }}
+      >
+        {options.map((option, index) => (
+          <MenuItem
+            key={option}
+            selected={index === selectedIndex}
+            onClick={(event) => handleMenuItemClick(event, index)}
+          >
+            {option}
+          </MenuItem>
+        ))}
+      </Menu>
+                          </React.Fragment>
+
+
+                        
+                          
+                          {isAuthenticated && <>
+                      <Button
+                       sx={{
+                        backgroundColor: "var(--button1)",
+                        color: "#fff",
+                        "&:hover": {
+                          backgroundColor: "var(--button1Hover)",
+                        },
+                        width: { xs: "18vmax", md: "12vmax" },
+                        ml: "1vmax",
+                        mt: 0,
+                      }}
+                      onClick={() => {
+                            navigate('/chat', { state: { reciverId: id, name:user?.name, avatar:user?.avatar?.public_URI } });
+
+                      }}>Chat with {user?.name?.split(" ")[0]}</Button>
+                     </>}
                         </Box>
                       ) : (
                         (isAuthenticated || menAuth) && (
@@ -493,24 +711,7 @@ const MentorProfile = () => {
                           </Typography>
                         )
                       )}
-                     {isAuthenticated && <>
-                      <Button
-                       sx={{
-                        backgroundColor: "var(--button1)",
-                        color: "#fff",
-                        "&:hover": {
-                          backgroundColor: "var(--button1Hover)",
-                        },
-                        mt:{
-                          xs:'20px',
-                          md:0
-                        }
-                      }}
-                      onClick={() => {
-                            navigate('/chat', { state: { reciverId: id, name:user?.name, avatar:user?.avatar?.public_URI } });
-
-                      }}>Chat with {user?.name?.split(" ")[0]}</Button>
-                     </>}
+                     
                     </Box>
                     {isAuthenticated || menAuth ? (
                       <>

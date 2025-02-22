@@ -110,7 +110,7 @@ const ChatService = ({userId, role, userAvatar}) => {
     } = useSelector((state) => state.getAllConnectionMenPast);
     const socket = useMemo(
       () =>
-        io(process.env.REACT_APP_API_URL, {
+        io(import.meta.env.VITE_API_URL, {
             withCredentials: true
            }),
         []

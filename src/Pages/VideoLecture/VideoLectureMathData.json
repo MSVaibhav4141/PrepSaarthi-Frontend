@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "topic": "Basic Mathematics",
+    "videoLink": "Click here to watch",
+    "note": "https://youtube.com/playlist?list=PLcGMj6pJueMBw7WRm72KgKj7IJJC8PixC&si=4YMog9rSe-afKRcy"
+  },
+  {
+    "id": 2,
+    "topic": "Sets and Relations",
+    "videoLink": "https://youtube.com/playlist?list=PLcGMj6pJueMAD2O-VtUkdX9cVT_N8BUIt&si=huAWaA8PnbzdsNM4",
+    "note": ""
+  },
+  {
+    "id": 3,
+    "topic": "Trigonometric Ratio and Identity",
+    "videoLink": "https://youtube.com/playlist?list=PLcGMj6pJueMAD2O-VtUkdX9cVT_N8BUIt&si=huAWaA8PnbzdsNM4",
+    "note": ""
+  },
+  {
+    "id": 4,
+    "topic": "Trigonometric Equations",
+    "videoLink": "https://youtube.com/playlist?list=PLcGMj6pJueMCjh9FQiUkhY3nMCNo9EKBw&si=HWNFrD5PN7bpP4jI",
+    "note": ""
+  },
+  {
+    "id": 5,
+    "topic": "Inverse Trigonometric Functions",
+    "videoLink": "https://youtube.com/playlist?list=PLcGMj6pJueMCZ7ftMtc4sjuewFp8CBGyL&si=-ovR3f_4xg5Iq-n1",
+    "note": ""
+  },
+  {
+    "id": 6,
+    "topic": "Quadratic Equations",
+    "videoLink": "https://youtube.com/playlist?list=PLcGMj6pJueMBpxXsjM_tv0YIBvCaNfWq2&si=ttMC1sbvQSO7u3Z4",
+    "note": ""
+  },
+  {
+    "id": 7,
+    "topic": "Sequence and Series",
+    "videoLink": "https://youtube.com/playlist?list=PL7ZxEijKqIh_feuNh7SrtXhjNStW05gVF&si=WV2zH6zo6rU8yCee",
+    "note": ""
+  },
+  {
+    "id": 8,
+    "topic": "Binomial Theorem",
+    "videoLink": "https://youtube.com/playlist?list=PL7ZxEijKqIh9th3iJWzcZO5_EUplz4RO9&si=Wjc0JvhxVvh0bxBI",
+    "note": ""
+  },
+  {
+    "id": 9,
+    "topic": "Permutation and Combination",
+    "videoLink": "https://youtube.com/playlist?list=PLm2ZYJCeiM06gkchlBy5Qc1ul85hli3IY&si=dSk1d4ehefOhbAGy",
+    "note": ""
+  },
+  {
+    "id": 10,
+    "topic": "Straight Line",
+    "videoLink": "https://youtube.com/playlist?list=PLm2ZYJCeiM05aR942JdoBX1y1GaS4_S67&si=5g17HxR-Iqen3yAV",
+    "note": ""
+  },
+  {
+    "id": 11,
+    "topic": "Circle",
+    "videoLink": "https://youtube.com/playlist?list=PLm2ZYJCeiM04Qae4xAiNXPCVdEgUvt3w7&si=grYkjN02NDnAgHUP",
+    "note": ""
+  },
+  {
+    "id": 12,
+    "topic": "Parabola",
+    "videoLink": "https://youtube.com/playlist?list=PLm2ZYJCeiM05faGiPdDNxWvVzu7dhTvHX&si=uEdSBvS5xtooTEo1",
+    "note": ""
+  },
+  {
+    "id": 13,
+    "topic": "Ellipse",
+    "videoLink": "https://youtube.com/playlist?list=PLm2ZYJCeiM071-w37rQnwNcg5jo-Df-IJ&si=xSucT2FFXgTcGROD",
+    "note": ""
+  },
+  {
+    "id": 14,
+    "topic": "Hyperbola",
+    "videoLink": "https://youtube.com/playlist?list=PLm2ZYJCeiM05_NLLfwo65wac_TTiybVka&si=MOUxxEhYOrOd--p8",
+    "note": ""
+  },
+  {
+    "id": 15,
+    "topic": "Complex Numbers",
+    "videoLink": "https://youtube.com/playlist?list=PL4vBzdWLIKrd8wp51tZip_RfyCbgvGacg&si=Ny91xIJ8y8JqkokE",
+    "note": ""
+  },
+  {
+    "id": 16,
+    "topic": "Solutions of Triangle",
+    "videoLink": "https://youtube.com/playlist?list=PL4vBzdWLIKrdimwbMer1Tf02p5UvKnS3D&si=PgNkvM1ek3kZNbDK",
+    "note": ""
+  },
+  {
+    "id": 17,
+    "topic": "Mathematical Induction",
+    "videoLink": "https://youtube.com/playlist?list=PL_A4M5IAkMad3oVwABWAwMOPxsQlIEz38&si=Ax126XKmQga-Clst",
+    "note": ""
+  },
+  {
+    "id": 18,
+    "topic": "Statistics",
+    "videoLink": "https://youtube.com/playlist?list=PL_A4M5IAkMadco0ISV4gL7BEkzs7ki6lm&si=jTBlJd9UPU1qkZ-N",
+    "note": ""
+  },
+  {
+    "id": 19,
+    "topic": "Mathematical Reasoning",
+    "videoLink": "https://www.youtube.com/live/QVL2LWY1Z-Q?si=tNPuFwU7kq_MrrOi",
+    "note": ""
+  },
+  {
+    "id": 20,
+    "topic": "Functions",
+    "videoLink": "https://youtube.com/playlist?list=PLFUgH4fvw9YB48rFI-RPU9uguZ7DCKJE1&si=w3YVw1vItCIO04C9",
+    "note": ""
+  },
+  {
+    "id": 21,
+    "topic": "Limits",
+    "videoLink": "https://youtube.com/playlist?list=PLFUgH4fvw9YDiq5U__Ftk8NYEDyFecbdC&si=0wTqP3Er_ojuqx49",
+    "note": ""
+  },
+  {
+    "id": 22,
+    "topic": "Contunuity",
+    "videoLink": "https://youtube.com/playlist?list=PL4vBzdWLIKrdiNwaFAJckWBm6aP6qvV_Q&si=cte3PtZcjxuGlbcA",
+    "note": ""
+  },
+  {
+    "id": 23,
+    "topic": "Differentiability",
+    "videoLink": "https://youtube.com/playlist?list=PL_A4M5IAkMafj2vfy6rQHtTzgA_TnJsZ_&si=FU0lNxnVyIYwIbTT",
+    "note": ""
+  },
+  {
+    "id": 24,
+    "topic": "Methods of Differentiation",
+    "videoLink": "https://youtube.com/playlist?list=PLm2ZYJCeiM06pRRXtBz-UF-hXk1e4pAMT&si=48O0LAFUbwjo8_A6",
+    "note": ""
+  },
+  {
+    "id": 25,
+    "topic": "Application of Derivates",
+    "videoLink": "https://youtube.com/playlist?list=PLbu_fGT0MPsu7szCnbhCMVB0LJpEJhaaM&si=P9sK1KE5cC2YHZjL",
+    "note": ""
+  },
+  {
+    "id": 26,
+    "topic": "Indefinite Integration",
+    "videoLink": "https://youtube.com/playlist?list=PL_A4M5IAkMacK7OyqPwHe0rvG4KqxFIum&si=V4dSRXWvpS1xtPkQ",
+    "note": ""
+  },
+  {
+    "id": 27,
+    "topic": "Definite Integration",
+    "videoLink": "https://youtube.com/playlist?list=PL_A4M5IAkMafGD8xJhm9IioyF_norREYN&si=BeWf2_uLAOAC6d0e",
+    "note": ""
+  },
+  {
+    "id": 28,
+    "topic": "Area under Curves",
+    "videoLink": "https://youtube.com/playlist?list=PL4vBzdWLIKrdx0YmNYNnczL3ET3uous3x&si=F1U0d4wjqNNCFdas",
+    "note": ""
+  },
+  {
+    "id": 29,
+    "topic": "Differential Equations",
+    "videoLink": "https://youtube.com/playlist?list=PL4vBzdWLIKrd0XUDTols6lndLedGZFr64&si=Cc20fK8zY-DCELCW",
+    "note": ""
+  },
+  {
+    "id": 30,
+    "topic": "Matrices",
+    "videoLink": "https://youtube.com/playlist?list=PLm2ZYJCeiM04Dc2HFdqACYK8PKuHKuu8S&si=DawTFLG4IsDTQHMQ",
+    "note": ""
+  },
+  {
+    "id": 31,
+    "topic": "Determinants",
+    "videoLink": "https://youtube.com/playlist?list=PLm2ZYJCeiM07VbKrD4C8P0XwLHBNTcPRN&si=g4pc5vDZXRIt4612",
+    "note": ""
+  },
+  {
+    "id": 32,
+    "topic": "Probabilility",
+    "videoLink": "https://youtube.com/playlist?list=PLbu_fGT0MPsvA6Btn3bw_as9d2VRUAZGe&si=kdNgLJy00pZ18gQf",
+    "note": ""
+  },
+  {
+    "id": 33,
+    "topic": "Vector Algebra",
+    "videoLink": "https://youtube.com/playlist?list=PLm2ZYJCeiM07C0TZBGO5-exLOy_nIEJrI&si=lPVbZAz7vyJ4von7",
+    "note": ""
+  },
+  {
+    "id": 34,
+    "topic": "3 Dimensional Geometry",
+    "videoLink": "https://youtube.com/playlist?list=PLm2ZYJCeiM04VNVFdCtAazOn-qC_6P_M2&si=OsMBUFNdyOAa5MdJ",
+    "note": ""
+  },
+  {
+    "id": 35,
+    "topic": "Linear Programming",
+    "videoLink": "https://www.youtube.com/live/6lGUchGmkbs?si=PBZQnPC2K5T1ac-0",
+    "note": ""
+  }
+]

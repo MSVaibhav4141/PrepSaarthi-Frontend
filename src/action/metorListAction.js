@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-const axiosInstance = axios.create({baseURL:process.env.REACT_APP_API_URL, withCredentials:true})
+const axiosInstance = axios.create({baseURL:import.meta.env.VITE_API_URL, withCredentials:true})
 
 
 // all activr mentor list 

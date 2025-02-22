@@ -1,0 +1,170 @@
+[
+  {
+    "id": 1,
+    "topic": "Basic Maths in Physics",
+    "videoLink": "https://youtube.com/playlist?list=PLxyGaR3hEy3ixh82zSeSoRcBuOfcD9LcT&si=CJKtUHqTygIiu2DU",
+    "note": ""
+  },
+  {
+    "id": 2,
+    "topic": "Units and Dimensions & Error Analysis",
+    "videoLink": "https://youtube.com/playlist?list=PLxb0SzPSaqZ4zV2ftv64MaL7ObQCG6a-6&si=SdHr2zlPOqbetjer",
+    "note": ""
+  },
+  {
+    "id": 3,
+    "topic": "Motion in 1D",
+    "videoLink": "https://youtube.com/playlist?list=PLAwFBfYMv1rtUz-ZmFHnH62XP4pFaxcll&si=BGCde0EJyxzx0Fdz",
+    "note": ""
+  },
+  {
+    "id": 4,
+    "topic": "Motion in 2D",
+    "videoLink": "https://youtube.com/playlist?list=PLbu_fGT0MPsuBLKPgzrjppOtFkYT2BoXo&si=8xo_bAOwuye-KZ2P",
+    "note": ""
+  },
+  {
+    "id": 5,
+    "topic": "Newton's laws of motion",
+    "videoLink": "https://youtube.com/playlist?list=PLbu_fGT0MPssbsntOuvMiWP4T5YFyacUa&si=_C8D5GqN6e4cmmPH",
+    "note": ""
+  },
+  {
+    "id": 6,
+    "topic": "Work, Energy and Power",
+    "videoLink": "https://youtube.com/playlist?list=PL_A4M5IAkMadTDfU4hJ23tdPqIwV-v6io&si=DQPFYdRIETTB1OTN",
+    "note": ""
+  },
+  {
+    "id": 7,
+    "topic": "Circular Motion",
+    "videoLink": "https://youtube.com/playlist?list=PLT2lBbFyq9CiFg1ysGxHWLMlo2aFU2_Cd&si=utShF0GMc4XPmcQ7",
+    "note": ""
+  },
+  {
+    "id": 8,
+    "topic": "Centre of Mass and collision",
+    "videoLink": "https://youtube.com/playlist?list=PLxb0SzPSaqZ5Sk1CQds4m29MUYT-qOfdj&si=CWkFQKduEzJLwmeM",
+    "note": ""
+  },
+  {
+    "id": 9,
+    "topic": "Rotational Motion",
+    "videoLink": "https://youtube.com/playlist?list=PL_A4M5IAkMacVaetkKqlCBstwK7TdjOa9&si=BI27nZau31ra5QI5",
+    "note": ""
+  },
+  {
+    "id": 10,
+    "topic": "Gravitation",
+    "videoLink": "https://youtube.com/playlist?list=PL_A4M5IAkMaeGEjLX2pJU-qqnPcyjpBiV&si=roAXDCyTTP1t6HRi",
+    "note": ""
+  },
+  {
+    "id": 11,
+    "topic": "SHM",
+    "videoLink": "https://youtube.com/playlist?list=PLbu_fGT0MPstKfbtCysXQqi-G1gkwR0oM&si=m9Vek31vs1_RIj-2",
+    "note": ""
+  },
+  {
+    "id": 12,
+    "topic": "Mechanical Properties of Matter",
+    "videoLink": "https://youtube.com/playlist?list=PLno9Nk5f6CTK_A-mUhMKPXfsv-B_0SoZJ&si=X_TrZBCD-juER8x_",
+    "note": ""
+  },
+  {
+    "id": 13,
+    "topic": "Fluid Mechanics",
+    "videoLink": "https://youtube.com/playlist?list=PL_A4M5IAkMacuWACFhY1HSZAfZlwml0X4&si=Bj2SZaCG-WHW26a5",
+    "note": ""
+  },
+  {
+    "id": 14,
+    "topic": "Waves & Sound",
+    "videoLink": "https://youtube.com/playlist?list=PLxb0SzPSaqZ5r62ls0zoqZoz3PWWxn4Ll&si=zaa4EfQF29b6E1cH",
+    "note": ""
+  },
+  {
+    "id": 15,
+    "topic": "Elasticity, Heat and Thermodynamics",
+    "videoLink": "https://youtube.com/playlist?list=PLm2ZYJCeiM04VNVFdCtAazOn-qC_6P_M2&si=OsMBUFNdyOAa5MdJ",
+    "note": ""
+  },
+  {
+    "id": 16,
+    "topic": "Electrostatics - 1",
+    "videoLink": "https://youtube.com/playlist?list=PLfaB0cKP5SpS2LEPCFl2QIZ4lYim6-jPB&si=MQw2Db0RGbElqB6Z",
+    "note": ""
+  },
+  {
+    "id": 17,
+    "topic": "Electrostatics - 2",
+    "videoLink": "https://youtube.com/playlist?list=PLxb0SzPSaqZ582pW_hNhCv-pf9tObGnkl&si=Q4CvPzNUAT3ZcU2o",
+    "note": ""
+  },
+  {
+    "id": 18,
+    "topic": "Capacitors",
+    "videoLink": "https://youtube.com/playlist?list=PLxb0SzPSaqZ6Gxno3L7q-JfIX_lRTreaO&si=wt_C8qDlO64aRI9s",
+    "note": ""
+  },
+  {
+    "id": 19,
+    "topic": "Current Electricity",
+    "videoLink": "https://youtube.com/playlist?list=PLxb0SzPSaqZ6-QbUMrNn_M9YfcDJts6cX&si=TBiYFmWvOpCOHns-",
+    "note": ""
+  },
+  {
+    "id": 20,
+    "topic": "Magnetism",
+    "videoLink": "https://youtube.com/playlist?list=PLxb0SzPSaqZ5TdbhPLtTxuUISwr97ivIx&si=rCvEkD3drAdCkR-r",
+    "note": ""
+  },
+  {
+    "id": 21,
+    "topic": "Geometrical Optics",
+    "videoLink": "https://youtube.com/playlist?list=PLxb0SzPSaqZ7EqCrN8lcEhA-PK8Kaaz_B&si=4iFQbDUE0l7emqk2",
+    "note": ""
+  },
+  {
+    "id": 22,
+    "topic": "Optical Instruments",
+    "videoLink": "https://youtube.com/playlist?list=PL_A4M5IAkMafiM0-L2Uv0aeZH3K2YS2A0&si=ksw_8FxFPWA3tSCn",
+    "note": ""
+  },
+  {
+    "id": 23,
+    "topic": "Wave optics",
+    "videoLink": "https://youtube.com/playlist?list=PLxb0SzPSaqZ5dbymq7QUsbNI3w4xalQfe&si=WSViT7vvh2usLYRx",
+    "note": ""
+  },
+  {
+    "id": 24,
+    "topic": "Modern Physics",
+    "videoLink": "https://youtube.com/playlist?list=PLxb0SzPSaqZ5tyBaUrbHDwAarvxf0TVns&si=qvAJUCiopX5gQT-j",
+    "note": ""
+  },
+  {
+    "id": 25,
+    "topic": "Alternating Current",
+    "videoLink": "https://youtube.com/playlist?list=PL_A4M5IAkMafg7ZUZZpXS8mGSBP49fjl3&si=xWKaP8GLzM-LcGwI",
+    "note": ""
+  },
+  {
+    "id": 26,
+    "topic": "Electromagnetic Induction",
+    "videoLink": "https://youtube.com/playlist?list=PLxb0SzPSaqZ72yyiW7WWCjF8uvTsVxsH9&si=m0zK186fAVIx5IkA",
+    "note": ""
+  },
+  {
+    "id": 27,
+    "topic": "Semiconductors",
+    "videoLink": "https://youtube.com/playlist?list=PLc8bIC9m4cTJKtM_mjzBrg1cUJx0vuhNJ&si=s6EzSmMb371hoSUo",
+    "note": ""
+  },
+  {
+    "id": 28,
+    "topic": "EM Waves and Communication System",
+    "videoLink": "https://www.youtube.com/live/cM25p1HE71Y?si=UkrnWSUw2UNJLHMl",
+    "note": ""
+  }
+]

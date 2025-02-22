@@ -21,7 +21,6 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import HomeIcon from "@mui/icons-material/Home";
 import HandshakeIcon from "@mui/icons-material/Handshake";
 import MailIcon from "@mui/icons-material/Mail";
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import SchoolIcon from "@mui/icons-material/School";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -31,7 +30,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { useSelector, useDispatch } from "react-redux";
-import { clearError, clearMessage, getAllNotification, getAllNotificationStu, getMessageStudents, logoutUser } from "../../action/userAction";
+import { clearError, clearMessage, getAllNotification, getAllNotificationStu, logoutUser } from "../../action/userAction";
 import {
   clearError as stuErrorClear,
   clearMessage as stuClrMssg,
@@ -39,8 +38,6 @@ import {
 } from "../../action/studentAction";
 import toast from "react-hot-toast";
 import { Badge, CardMedia } from "@mui/material";
-import { getMessageStudent } from "../../reducer/userReducer";
-import axios from "axios";
 // import './navbar'
 const drawerWidth = 240;
 let navbarRef = null;
@@ -67,19 +64,6 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-
-const style1 = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  // width: 400,
-  // height:"80vh",
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
 window.addEventListener("scroll", readScroll);
 function ResponsiveAppBar(props) {
   const navbarRefInternal = React.useRef(null);
@@ -91,11 +75,11 @@ function ResponsiveAppBar(props) {
   }, []);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [notification, setNot] = React.useState([])
+  const [notification,setNot] = React.useState([])
   const { message, user, isAuthenticated, error } = useSelector(
     (state) => state.mentor
   );
-  const { notificatioin } = useSelector((state) => state.notification)
+  const {notificatioin} = useSelector((state) => state.notification)
 
 
   const {
@@ -123,45 +107,19 @@ function ResponsiveAppBar(props) {
     },
   ];
 
-
-  const [usermessage, setusermessage] = React.useState([]);
-  const [mentormessage, setMentormessage] = React.useState([]);
-
   React.useEffect(() => {
     // console.log(user?.isAuthenticated,stuUser?.isAuthenticated )
-    async function getmessagestudent() {
-      const reponse = await axios.get(`http://localhost:5000/v1/student/messages`);
-      setusermessage(reponse.data.data);
-    }
-
-    async function getmessagementor() {
-      const reponse = await axios.get(`http://localhost:5000/v1/mentor/messages`);
-      setMentormessage(reponse.data.data);
-      console.log(reponse.data.data);
-      console.log(mentormessage);
-      
-    }
-    getmessagestudent();
-    getmessagementor();
-    if (isAuthenticated) {
-      console.log("mntor logged in ");
-
+    if(isAuthenticated){
       dispatch(getAllNotification(user?.user?._id))
-
-
-
-
-
     }
-
-    if (stuAuth) {
+    if(stuAuth){
       dispatch(getAllNotificationStu(stuUser?.user?._id))
     }
-  }, [user, stuUser])
+  }, [user,stuUser])
 
-  React.useEffect(() => {
-    if (notificatioin) {
-      setNot(notificatioin)
+   React.useEffect(() => {
+    if(notificatioin){
+    setNot(notificatioin)
     }
   }, [notificatioin])
   React.useEffect(() => {
@@ -196,11 +154,7 @@ function ResponsiveAppBar(props) {
     setAnchorElUser(event.currentTarget);
   };
   const [open, setOpen] = React.useState(false);
-  const [opena, setOpena] = React.useState(false);
-  const [openb, setOpenb] = React.useState(false);
-
-
-
+ 
   const handleCloseUserMenu = (e) => {
     setAnchorElUser(null);
   };
@@ -209,9 +163,8 @@ function ResponsiveAppBar(props) {
     navigate("/role/mentor/final");
   };
 
-  const handleOpen = () => { setOpen(true) };
-  const handleClose = () => {
-    setOpen(false)
+  const handleOpen = () => {setOpen(true)};
+  const handleClose = () =>{ setOpen(false)
 
   };
   const { window } = props;
@@ -271,16 +224,16 @@ function ResponsiveAppBar(props) {
                 sx={
                   pathname === `/user/${stuUser?.user?._id || user?.user?._id}`
                     ? {
-                      textAlign: "start",
-                      color: "black",
-                      "& .MuiSvgIcon-root": { color: "grey" },
-                      bgcolor: "#d1e8ff",
-                    }
+                        textAlign: "start",
+                        color: "black",
+                        "& .MuiSvgIcon-root": { color: "grey" },
+                        bgcolor: "#d1e8ff",
+                      }
                     : {
-                      textAlign: "start",
-                      color: "black",
-                      "& .MuiSvgIcon-root": { color: "grey" },
-                    }
+                        textAlign: "start",
+                        color: "black",
+                        "& .MuiSvgIcon-root": { color: "grey" },
+                      }
                 }
               >
                 <AccountCircleIcon />
@@ -305,16 +258,16 @@ function ResponsiveAppBar(props) {
                 sx={
                   pathname === "/"
                     ? {
-                      textAlign: "start",
-                      color: "black",
-                      "& .MuiSvgIcon-root": { color: "grey" },
-                      bgcolor: "#d1e8ff",
-                    }
+                        textAlign: "start",
+                        color: "black",
+                        "& .MuiSvgIcon-root": { color: "grey" },
+                        bgcolor: "#d1e8ff",
+                      }
                     : {
-                      textAlign: "start",
-                      color: "black",
-                      "& .MuiSvgIcon-root": { color: "grey" },
-                    }
+                        textAlign: "start",
+                        color: "black",
+                        "& .MuiSvgIcon-root": { color: "grey" },
+                      }
                 }
               >
                 <HomeIcon />
@@ -340,18 +293,18 @@ function ResponsiveAppBar(props) {
                 <ListItemButton
                   sx={
                     pathname === item.link.split("#")[0] ||
-                      pathname === item.link?.split("?")[0]
+                    pathname === item.link?.split("?")[0]
                       ? {
-                        textAlign: "start",
-                        color: "black",
-                        "& .MuiSvgIcon-root": { color: "grey" },
-                        bgcolor: "#d1e8ff",
-                      }
+                          textAlign: "start",
+                          color: "black",
+                          "& .MuiSvgIcon-root": { color: "grey" },
+                          bgcolor: "#d1e8ff",
+                        }
                       : {
-                        textAlign: "start",
-                        color: "black",
-                        "& .MuiSvgIcon-root": { color: "grey" },
-                      }
+                          textAlign: "start",
+                          color: "black",
+                          "& .MuiSvgIcon-root": { color: "grey" },
+                        }
                   }
                 >
                   {item.icon}
@@ -381,16 +334,16 @@ function ResponsiveAppBar(props) {
                     sx={
                       pathname === "/settings"
                         ? {
-                          textAlign: "start",
-                          color: "black",
-                          "& .MuiSvgIcon-root": { color: "grey" },
-                          bgcolor: "#d1e8ff",
-                        }
+                            textAlign: "start",
+                            color: "black",
+                            "& .MuiSvgIcon-root": { color: "grey" },
+                            bgcolor: "#d1e8ff",
+                          }
                         : {
-                          textAlign: "start",
-                          color: "black",
-                          "& .MuiSvgIcon-root": { color: "grey" },
-                        }
+                            textAlign: "start",
+                            color: "black",
+                            "& .MuiSvgIcon-root": { color: "grey" },
+                          }
                     }
                   >
                     <SettingsIcon />
@@ -478,7 +431,7 @@ function ResponsiveAppBar(props) {
     window !== undefined ? () => window().document.body : undefined;
   return (
     <>
-      <Modal
+     <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={open}
@@ -491,136 +444,37 @@ function ResponsiveAppBar(props) {
           },
         }}
       >
-
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
               Notification
             </Typography>
-
+           
             {notification?.length > 0 ? (
               <>{notification?.map((i) => (
-                <Box sx={{ height: { md: '80px' }, width: '100%', bgcolor: '#dddddd', display: 'flex', alignItems: 'center', borderRadius: '20px' }} onClick={() => {
+                <Box sx={{height:{md:'80px'}, width:'100%', bgcolor:'#dddddd', display:'flex', alignItems:'center', borderRadius:'20px'}} onClick={() => {
                   setOpen(false)
                   navigate('/chat', { state: { senderId: i?.senderId } });
                   setNot((prev) => prev.filter(item => item._id !== i._id))
                 }}>
-                  <Box sx={{ margin: '10px' }}>
-                    <CardMedia sx={{ width: '50px', height: '50px', borderRadius: '50%' }} component={'img'} src={i?.senderAvatar}>
-
+                  <Box sx={{margin:'10px'}}>
+                    <CardMedia sx={{width:'50px', height:'50px', borderRadius:'50%'}} component={'img'} src={i?.senderAvatar}>
+  
                     </CardMedia>
                   </Box>
                   <Box>
-                    <Typography component={'p'} sx={{ fontWeight: '600' }}>{i?.senderName}</Typography>
-                    <Typography>{(((i?.senderContent?.length > 16 || i?.senderContent?.length > 16) && window?.innerWidth > 900)) ? ((i?.senderContent || i?.senderContent)?.substr(0, 16) + '...') : (((i?.senderContent || i?.senderContent)?.length > 25) ? (((i?.senderContent || i?.senderContent)?.substr(0, 25)) + '...') : (i?.senderContent || i?.senderContent))}</Typography>
+                    <Typography component={'p'} sx={{fontWeight:'600'}}>{i?.senderName}</Typography>
+                    <Typography>{(((i?.senderContent?.length > 16 || i?.senderContent?.length > 16) && window?.innerWidth > 900)) ? ((i?.senderContent|| i?.senderContent)?.substr(0,16) + '...'): (((i?.senderContent || i?.senderContent)?.length > 25)?(((i?.senderContent || i?.senderContent)?.substr(0,25))+'...'):(i?.senderContent || i?.senderContent))}</Typography>
                   </Box>
                 </Box>
               ))}</>
             ) : (<>
-              <Box>No New Notification</Box>
+            <Box>No New Notification</Box>
             </>)}
-
+            
           </Box>
         </Fade>
       </Modal>
-
-      {
-        isAuthenticated ? (
-          <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={opena}
-        onClose={() => setOpena(false)}
-        closeAfterTransition
-        slots={{ backdrop: Backdrop }}
-        slotProps={{
-          backdrop: {
-            timeout: 500,
-          },
-        }}
-      >
-
-        <Fade in={opena}>
-          <Box sx={style1}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
-              Message from admin
-            </Typography>
-
-            {usermessage?.length > 0 ? (
-              <>{usermessage?.map((i) => (
-                <Box sx={{ width: '100%', bgcolor: '#dddddd', display: 'flex', alignItems: 'center', borderRadius: '20px' }} onClick={() => {
-                  setOpena(false)
-                  navigate('/chat', { state: { senderId: i?.senderId } });
-                  setNot((prev) => prev.filter(item => item._id !== i._id))
-                }}>
-                  <Box sx={{ margin: '10px' }}>
-                    <CardMedia sx={{ width: '50px', height: '50px', borderRadius: '50%' }} component={'img'} src={i?.senderAvatar}>
-
-                    </CardMedia>
-                  </Box>
-                  <Box>
-                    <Typography component={'p'} sx={{ fontWeight: '600' }}>{i?.senderName}</Typography>
-                    <Typography>{i.message}</Typography>
-                  </Box>
-                </Box>
-              ))}</>
-            ) : (<>
-              <Box>No New Notification</Box>
-            </>)}
-
-          </Box>
-        </Fade>
-      </Modal>  
-        ) : (
-          <Modal
-          aria-labelledby="transition-modal-title"
-          aria-describedby="transition-modal-description"
-          open={openb}
-          onClose={() => setOpenb(false)}
-          closeAfterTransition
-          slots={{ backdrop: Backdrop }}
-          slotProps={{
-            backdrop: {
-              timeout: 500,
-            },
-          }}
-        >
-  
-          <Fade in={opena}>
-            <Box sx={style1}>
-              <Typography id="transition-modal-title" variant="h6" component="h2">
-                Message from admin
-              </Typography>
-  
-              {mentormessage?.length > 0 ? (
-                <>{mentormessage?.map((i) => (
-                  <Box sx={{ width: '100%', bgcolor: '#dddddd', display: 'flex', alignItems: 'center', borderRadius: '20px' }} onClick={() => {
-                    setOpena(false)
-                    navigate('/chat', { state: { senderId: i?.senderId } });
-                    setNot((prev) => prev.filter(item => item._id !== i._id))
-                  }}>
-                    <Box sx={{ margin: '10px' }}>
-                      <CardMedia sx={{ width: '50px', height: '50px', borderRadius: '50%' }} component={'img'} src={i?.senderAvatar}>
-  
-                      </CardMedia>
-                    </Box>
-                    <Box>
-                      <Typography component={'p'} sx={{ fontWeight: '600' }}>{i?.senderName}</Typography>
-                      <Typography>{i.message}</Typography>
-                    </Box>
-                  </Box>
-                ))}</>
-              ) : (<>
-                <Box>No New Notification</Box>
-              </>)}
-  
-            </Box>
-          </Fade>
-        </Modal>
-        )
-      }
-
-     
       <AppBar
         position="sticky"
         ref={navbarRefInternal}
@@ -736,14 +590,6 @@ function ResponsiveAppBar(props) {
                       color="error"
                     >
                       <MailIcon color="action" />
-                    </Badge>
-                  </IconButton>
-                  <IconButton onClick={() => setOpena(true)} aria-label="cart">
-                    <Badge
-                      badgeContent={mentormessage?.length}
-                      color="error"
-                    >
-                      <NotificationsActiveIcon color="action" />
                     </Badge>
                   </IconButton>
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

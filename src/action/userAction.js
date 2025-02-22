@@ -1,9 +1,40 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true,
 });
+
+
+
+
+export const uploadNotes = createAsyncThunk(
+  "videoNotes/upload",
+  async ({ videoId, note }, { rejectWithValue }) => {
+    try {
+      const { data } = await axiosInstance.post(`/v1/video/physics/notes`, {
+        videoId,
+        note
+      });
+      return data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const getNotesPhyysics = createAsyncThunk(
+  "user/get/notes",
+  async (data, { rejectWithValue }) => {
+    try {
+      // Use the `data.id` to build the URL dynamically
+      const response = await axiosInstance.get(`/v1/video/physics/fetch/notes`);
+      return response.data; // Return the data from the response
+    } catch (err) {
+      return rejectWithValue(err.response.data); // Return error data if request fails
+    }
+  }
+);
 
 // LOGIN
 
@@ -75,65 +106,6 @@ export const updateMentorFinalInfoAfter = createAsyncThunk(
     }
   }
 );
-
-// Send message to mentors
-export const sendMessageToMentors = createAsyncThunk(
-  "admin/message/mentors",
-  async (message, { rejectWithValue }) => {
-    let messagement = message.message;
-
-    try {
-      const config = { headers: { "Content-Type": "application/json" } };
-      const { data } = await axiosInstance.post(
-        `/v1/mentor/message`,
-        { messagement },
-        config
-      );
-      return data;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
-  }
-);
-
-// Send message to students
-export const sendMessageToStudents = createAsyncThunk(
-  "admin/message/students",
-  async (message, { rejectWithValue }) => {
-    var messagestudent = message.message;
-
-    try {
-      const config = { headers: { "Content-Type": "application/json" } };
-      const { data } = await axiosInstance.post(
-        `/v1/student/message`,
-        { messagestudent },
-        config
-      );
-      return data;
-    } catch (err) {
-      return rejectWithValue(err);
-    }
-  }
-);
-
-
-export const getMessageStudents = createAsyncThunk(
-  "/broadcast/student/message",
-  async (message, { rejectWithValue }) => {
-    try {
-      console.log("working");
-      
-      const { data } = await axiosInstance.get(
-        `/v1/student/messages`,
-      );
-      return data;
-    } catch (err) {
-      return rejectWithValue(err.response.data);
-    }
-  }
-);
-
-
 
 // update mentoring status
 export const updateMentoringStatus = createAsyncThunk(
@@ -321,10 +293,10 @@ export const getAllConnections = createAsyncThunk(
 );
 export const addNewConnection = createAsyncThunk(
   "admin/add/connection/new",
-  async ({ id, phnNo, duration, time, price }, { rejectWithValue }) => {
+  async ({id,phnNo,duration,time,price}, { rejectWithValue }) => {
     try {
-      const config = { headers: { "Content-Type": "application/json" } }
-      const { data } = await axiosInstance.post(`/v1/admin/add/connection`, { mobileNumber: phnNo, id: id, duration: duration, date: time, price: price }, config);
+      const config = {headers:{"Content-Type":"application/json"}}
+      const { data } = await axiosInstance.post(`/v1/admin/add/connection`, {mobileNumber:phnNo, id:id,duration:duration,date:time,price:price}, config);
       return data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -333,10 +305,10 @@ export const addNewConnection = createAsyncThunk(
 );
 export const findConnectionByMob = createAsyncThunk(
   "admin/find/connection/student",
-  async ({ mobileNumber }, { rejectWithValue }) => {
+  async ({mobileNumber}, { rejectWithValue }) => {
     try {
-      const config = { headers: { "Content-Type": "application/json" } }
-      const { data } = await axiosInstance.post(`/v1/admin/mentors/find/conn`, { mobileNumber }, config);
+      const config = {headers:{"Content-Type":"application/json"}}
+      const { data } = await axiosInstance.post(`/v1/admin/mentors/find/conn`, {mobileNumber}, config);
       return data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -345,10 +317,10 @@ export const findConnectionByMob = createAsyncThunk(
 );
 export const findMentorByMob = createAsyncThunk(
   "admin/find/mentor/mob",
-  async ({ mobileNumber }, { rejectWithValue }) => {
+  async ({mobileNumber}, { rejectWithValue }) => {
     try {
-      const config = { headers: { "Content-Type": "application/json" } }
-      const { data } = await axiosInstance.post(`/v1/admin/mentors/find/mob`, { mobileNumber }, config);
+      const config = {headers:{"Content-Type":"application/json"}}
+      const { data } = await axiosInstance.post(`/v1/admin/mentors/find/mob`, {mobileNumber}, config);
       return data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -357,10 +329,10 @@ export const findMentorByMob = createAsyncThunk(
 );
 export const swapConnection = createAsyncThunk(
   "admin/swap/connection",
-  async ({ id, mentorId }, { rejectWithValue }) => {
+  async ({id,mentorId}, { rejectWithValue }) => {
     try {
-      const config = { headers: { "Content-Type": "application/json" } }
-      const { data } = await axiosInstance.post(`/v1/admin/mentors/swap/connection`, { id, mentorId }, config);
+      const config = {headers:{"Content-Type":"application/json"}}
+      const { data } = await axiosInstance.post(`/v1/admin/mentors/swap/connection`, {id,mentorId}, config);
       return data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -455,12 +427,12 @@ export const allMentors = createAsyncThunk(
 //update status to head mentors (Admin)
 export const updateStatusHeadMentor = createAsyncThunk(
   "admin/update/head/status",
-  async ({ id, status }, { rejectWithValue }) => {
+  async ({id, status}, { rejectWithValue }) => {
     try {
-      const config = { headers: { "Content-Type": "application/json" } }
+      const config = {headers:{"Content-Type" : "application/json"}}
       const { data } = await axiosInstance.put(
         `/v1/admin/update/status`,
-        { id, status },
+        {id,status},
         config
       );
       return data;
@@ -489,46 +461,134 @@ export const updateCoverImage = createAsyncThunk(
 
 export const sendOTP = createAsyncThunk(
   "mentor/send/OTP",
-  async ({ email, mobileNumber }, { rejectWithValue }) => {
+  async ({email, mobileNumber}, { rejectWithValue }) => {
     try {
-      const config = { headers: { "Content-Type": "application/json" } }
-      const { data } = await axiosInstance.post(`/v1/users/send/otp`, { email, mobileNumber }, config);
+      const config = {headers:{"Content-Type" : "application/json"}}
+      const { data } = await axiosInstance.post(`/v1/users/send/otp`, {email,mobileNumber},config);
       return data;
     } catch (err) {
       return rejectWithValue(err.response.data);
     }
-  }
+  } 
 );
 export const popUpState = createAsyncThunk(
   "update/popup/state",
   async (popUp, { rejectWithValue }) => {
     try {
-      const config = { headers: { "Content-Type": "application/json" } }
-      const { data } = await axiosInstance.put(`/v1/mentor/update/popup`, { popUp }, config);
+      const config = {headers:{"Content-Type" : "application/json"}}
+      const { data } = await axiosInstance.put(`/v1/mentor/update/popup`,{popUp}, config);
       return data;
     } catch (err) {
       return rejectWithValue(err.response.data);
     }
   }
 );
+
 export const stusendOTP = createAsyncThunk(
   "student/send/OTP",
   async ({ email, mobileNumber }, { rejectWithValue }) => {
     try {
-      const config = { headers: { "Content-Type": "application/json" } }
-      const { data } = await axiosInstance.post(`/v1/student/send/otp`, { email, mobileNumber }, config);
+      const config = { headers: { "Content-Type": "application/json" } };
+      const payload = {};
+      if (email) payload.email = email;
+      if (mobileNumber) payload.mobileNumber = mobileNumber;
+
+      const { data } = await axiosInstance.post(
+        `/v1/student/send/otp`,
+        payload,
+        config
+      );
       return data;
     } catch (err) {
       return rejectWithValue(err.response.data);
     }
   }
 );
-export const resendOTP = createAsyncThunk(
-  "mentor/resend/OTP",
+export const stusendOTPemail = createAsyncThunk(
+  "student/send/email/OTP",
+  async ({ email }, { rejectWithValue }) => {
+    try {
+      const config = { headers: { "Content-Type": "application/json" } };
+      const payload = {};
+      if (email) payload.email = email;
+      
+
+      const { data } = await axiosInstance.post(
+        `/v1/student/send/email/otp`,
+        payload,
+        config
+      );
+      return data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+export const stusendOTPnumb = createAsyncThunk(
+  "student/send/OTP",
   async ({ email, mobileNumber }, { rejectWithValue }) => {
     try {
-      const config = { headers: { "Content-Type": "application/json" } }
-      const { data } = await axiosInstance.post(`/v1/users/resend/otp`, { email, mobileNumber }, config);
+      const config = { headers: { "Content-Type": "application/json" } };
+      const payload = {};
+      if (email) payload.email = email;
+      if (mobileNumber) payload.mobileNumber = mobileNumber;
+
+      const { data } = await axiosInstance.post(
+        `/v1/student/send/mobile/otp`,
+        payload,
+        config
+      );
+      return data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+export const mentorSendOTPemail = createAsyncThunk(
+  "mentor/send/email/OTP",
+  async ({ email }, { rejectWithValue }) => {
+    try {
+      const config = { headers: { "Content-Type": "application/json" } };
+      const payload = {};
+      if (email) payload.email = email; 
+      const { data } = await axiosInstance.post(
+        `/v1/mentor/send/email/otp`,
+        payload,
+        config
+      );
+      return data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+export const mentorSendOTPnumb = createAsyncThunk(
+  "mentor/send/OTP",
+  async ({ email, mobileNumber }, { rejectWithValue }) => {
+    try {
+      const config = { headers: { "Content-Type": "application/json" } };
+      const payload = {};
+      if (email) payload.email = email;
+      if (mobileNumber) payload.mobileNumber = mobileNumber;  
+      const { data } = await axiosInstance.post(
+        `/v1/mentor/send/monile/otp`,
+        payload,  
+        config
+      );
+      return data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+
+export const resendOTP = createAsyncThunk(
+  "mentor/resend/OTP",
+  async ({email, mobileNumber}, { rejectWithValue }) => {
+    try {
+      const config = {headers:{"Content-Type" : "application/json"}}
+      const { data } = await axiosInstance.post(`/v1/users/resend/otp`, {email, mobileNumber}, config);
       return data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -537,10 +597,10 @@ export const resendOTP = createAsyncThunk(
 );
 export const sturesendOTP = createAsyncThunk(
   "student/resend/OTP",
-  async ({ email, mobileNumber }, { rejectWithValue }) => {
+  async ({email, mobileNumber}, { rejectWithValue }) => {
     try {
-      const config = { headers: { "Content-Type": "application/json" } }
-      const { data } = await axiosInstance.post(`/v1/student/resend/otp`, { email, mobileNumber }, config);
+      const config = {headers:{"Content-Type" : "application/json"}}
+      const { data } = await axiosInstance.post(`/v1/student/resend/otp`,{email, mobileNumber}, config);
       return data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -551,8 +611,8 @@ export const isTKid = createAsyncThunk(
   "user/tkid",
   async (tkid, { rejectWithValue }) => {
     try {
-      const config = { headers: { "Content-Type": "application/json" } }
-      const { data } = await axiosInstance.post(`/v1/tkid/isexists`, { tkid }, config);
+      const config = {headers:{"Content-Type" : "application/json"}}
+      const { data } = await axiosInstance.post(`/v1/tkid/isexists`,{tkid}, config);
       return data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -575,6 +635,7 @@ export const verifyOTP = createAsyncThunk(
     }
   }
 );
+
 export const stuVerifyOTP = createAsyncThunk(
   "student/verify/OTP",
   async (otp, { rejectWithValue }) => {
@@ -591,6 +652,74 @@ export const stuVerifyOTP = createAsyncThunk(
     }
   }
 );
+
+export const stuVerifyOTPEmail = createAsyncThunk(
+  "student/verify/emailOTP",
+  async (otp, { rejectWithValue }) => {
+    try {
+      const config = { headers: { "Content-Type": "application/json" } };
+      const { data } = await axiosInstance.post(
+        `/v1/student/verify/emailotp`,
+        { otp: otp },
+        config
+      );
+      return data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+export const stuVerifyOTPNumb = createAsyncThunk(
+  "student/verify/numbOTP",
+  async (otp, { rejectWithValue }) => {
+    try {
+      const config = { headers: { "Content-Type": "application/json" } };
+      const { data } = await axiosInstance.post(
+        `/v1/student/verify/numbotp`,
+        { otp: otp },
+        config
+      );
+      return data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+export const mentorVerifyOTPEmail = createAsyncThunk(
+  "mentor/verify/emailOTP",
+  async (otp, { rejectWithValue }) => {
+    try {
+      const config = { headers: { "Content-Type": "application/json" } };
+      const { data } = await axiosInstance.post(
+        `/v1/mentor/verify/emailotp`,
+        { otp: otp },
+        config
+      );
+      return data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+export const mentorVerifyOTPNumb = createAsyncThunk(
+  "mentor/verify/numbOTP",
+  async (otp, { rejectWithValue }) => {
+    try {
+      const config = { headers: { "Content-Type": "application/json" } };
+      const { data } = await axiosInstance.post(
+        `/v1/mentor/verify/mobileotp`,
+        { otp: otp },
+        config 
+      );
+      return data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+
+
 
 export const resetPassword = createAsyncThunk(
   "user/reset/password",
@@ -661,7 +790,7 @@ export const getAllNotification = createAsyncThunk(
       const config = { headers: { "Content-Type": "application/json" } };
       const { data } = await axiosInstance.post(
         `/v1/mentor/all/notification/`,
-        { id },
+        {id},
         config
       );
       return data;
@@ -676,7 +805,7 @@ export const getAllNotificationStu = createAsyncThunk(
     try {
       const config = { headers: { "Content-Type": "application/json" } };
       const { data } = await axiosInstance.post(
-        `/v1/student/all/notification/`, { id },
+        `/v1/student/all/notification/`,{id},
         config
       );
       return data;

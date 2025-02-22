@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-const axiosInstance = axios.create({baseURL:process.env.REACT_APP_API_URL, withCredentials:true})
+const axiosInstance = axios.create({baseURL:import.meta.env.VITE_API_URL, withCredentials:true})
 
 
 // LOGIN
@@ -50,7 +50,42 @@ export const updateStudentFinalInfo = createAsyncThunk(
     }
   }
 );
-
+ export const updatePhynote = createAsyncThunk(
+    "student/update/phynote",
+    async (userData, { rejectWithValue }) => {
+      try {
+        const config = { headers: { "Content-Type": "application/json" } };
+        const { data } = await axiosInstance.put(`/v1/student/:studentId/phy/:chapterId`, userData, config);
+        return data;
+      } catch (err) {
+        return rejectWithValue(err.response.data);
+      }
+    }
+  );
+  export const updatechemisnote = createAsyncThunk(
+    "student/update/chemisnote",
+    async (userData, { rejectWithValue }) => {
+      try {
+        const config = { headers: { "Content-Type": "application/json" } };
+        const { data } = await axiosInstance.put(`/v1/student/:studentId/chem/:chapterId`, userData, config);
+        return data;
+      } catch (err) {
+        return rejectWithValue(err.response.data);
+      }
+    }
+  );
+  export const updatemathnote = createAsyncThunk(
+    "student/update/mathnote",
+    async (userData, { rejectWithValue }) => {
+      try {
+        const config = { headers: { "Content-Type": "application/json" } };
+        const { data } = await axiosInstance.put(`/v1/student/:studentId/maths/:chapterId`, userData, config);
+        return data;
+      } catch (err) {
+        return rejectWithValue(err.response.data);
+      }
+    }
+  );
 
 export const loadUser = createAsyncThunk(
   "student/load",
